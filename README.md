@@ -13,7 +13,7 @@ bullet is in path of player or not
 ## Reward function:
 
 1)Penalty when taking damage
-2) Dense reward based on time the AI survive each step
+( <br> )2) Dense reward based on time the AI survive each step
 
 ## Reset condition:
 run out of HP
