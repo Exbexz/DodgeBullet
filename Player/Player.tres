@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://x5evaeg5er18"]
-
-[ext_resource type="Shader" path="res://Player/Player.gdshader" id="1_0fmfs"]
-
-[resource]
-shader = ExtResource("1_0fmfs")
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/line_thickness = 0.3
