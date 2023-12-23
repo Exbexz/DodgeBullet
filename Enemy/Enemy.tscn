@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://ccgss6kgmwyxw"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_5v02t"]
+[ext_resource type="Texture2D" uid="uid://dfklvwh5hbk7w" path="res://Enemy/shade_enemy.png" id="1_ay0mk"]
+[ext_resource type="Material" uid="uid://dg3iy4n4x6j5e" path="res://Enemy/Enemy.tres" id="1_hc4xx"]
+[ext_resource type="PackedScene" uid="uid://hco6jphk1i4i" path="res://Enemy/red_ball.tscn" id="2_u7r33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2256"]
+atlas = ExtResource("1_ay0mk")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usgx7"]
+atlas = ExtResource("1_ay0mk")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84fab"]
+atlas = ExtResource("1_ay0mk")
+region = Rect2(46, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt44i"]
+atlas = ExtResource("1_ay0mk")
+region = Rect2(69, 0, 23, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42vh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2256")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usgx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84fab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt44i")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tetxd"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_5v02t")
+ammo = ExtResource("2_u7r33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = ExtResource("1_hc4xx")
+sprite_frames = SubResource("SpriteFrames_42vh7")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_tetxd")
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
+hit_from_inside = true
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="RedShotTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="BlueShotTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="RedShotTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BlueShotTimer" to="." method="_on_shotgun_timer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
