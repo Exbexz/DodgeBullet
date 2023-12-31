@@ -18,3 +18,6 @@ bullet is in path of player or not
 ### Reset condition:
 run out of HP<br>
 survive for certain step
+
+## Credits 
+original application: https://github.com/Mxple/TPGsim/tree/main
