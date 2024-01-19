@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+logs/
+testing/
+bin/
+experiments/
+script_templates/
+addons/
+Overview.txt
+

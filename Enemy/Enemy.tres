@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dg3iy4n4x6j5e"]
+
+[ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="1_mscvd"]
+
+[resource]
+resource_name = "outline"
+shader = ExtResource("1_mscvd")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 0.3333
